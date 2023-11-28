@@ -1,12 +1,15 @@
 package pratica02;
 import java.util.Scanner;
 import pratica02.ConverteMoeda;
+import pratica02.JogoAdivinhacao;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
+		
+		JogoAdivinhacao jogo = new JogoAdivinhacao();
 		
 		ConverteMoeda cm = new ConverteMoeda();
 		
@@ -19,6 +22,10 @@ public class Main {
         double valorConvertido = ConverteMoeda.calculaConversaoMoeda(cm.getQtdDolares(), cm.getTaxaCambio());
     
         System.out.printf("O valor convertido é: %.2f%n", valorConvertido);
+        
+        
+        //Questão02
+       jogo.adivinhaNumero();
 
 	}
 
