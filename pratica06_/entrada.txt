@@ -1,0 +1,3 @@
+hello word,
+atividade para leitura de arquivo.
+agora foi
