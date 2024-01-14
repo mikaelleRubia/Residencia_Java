@@ -23,7 +23,7 @@ public class exercicio02 {
 
 
 		
-		 try(BufferedWriter br = new BufferedWriter(new FileWriter(file))) {
+		 try(BufferedWriter br = new BufferedWriter(new FileWriter(file, true))) {
 			 do {
 				 
 				System.out.println("Deseja a string para ser adicionado no arquivo");

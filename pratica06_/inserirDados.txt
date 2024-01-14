@@ -1,2 +1,4 @@
 casamento
 vermelho
+carro
+avião
