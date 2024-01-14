@@ -1,24 +1,28 @@
 package pratica06;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
 
 public class exercicio01 {
-
-	 public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException {
 		 File file = new File("/home/mikaelle/eclipse-workspace/pratica06/entrada.txt");
 		 
-		 Scanner sc = new Scanner(file);
+		 try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+			 String line = br.readLine();
+			 while(line != null) {
+				 System.out.println(line);
+				 line = br.readLine();
+			 }
+			 
+		 }
+		 catch(IOException e) {
+			 System.out.println("error: "+ e.getMessage());
+		 }
 
-		 while(sc.hasNextLine()) {
-			 System.out.println(sc.nextLine());
-		 }
-		 //se der tudo certo, entra no if e fecha o scanner
-		 if( sc !=null) {
-			 sc.close();
-		 }
 	 }
 }

@@ -10,10 +10,8 @@ import java.util.Scanner;
 public class cursoFileReader {
 	public static void main(String[] args) throws FileNotFoundException {
 		 File file = new File("/home/mikaelle/eclipse-workspace/pratica06/entrada.txt");
-		 FileReader fr = new FileReader(file);
-		 BufferedReader br = new BufferedReader(fr);
 		 
-		 try {
+		 try(BufferedReader br = new BufferedReader(new FileReader(file))) {
 			 String line = br.readLine();
 			 while(line != null) {
 				 System.out.println(line + "-");
@@ -24,19 +22,7 @@ public class cursoFileReader {
 		 catch(IOException e) {
 			 System.out.println("error: "+ e.getMessage());
 		 }
-		 finally {
-			 try {
-				 if(br !=null) {
-					br.close();
-				 }
-				 if(fr !=null) {
-					fr.close();
-				 }
-				 
-			 }catch(IOException e) {
-				 e.printStackTrace();
-			}
-		 }
+		 
 
 	 }
 }
