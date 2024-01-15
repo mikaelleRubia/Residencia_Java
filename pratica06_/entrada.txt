@@ -1,3 +1,2 @@
-hello word,
-atividade para leitura de arquivo.
-agora foi
+a casa está lá
+a casa não está lá
