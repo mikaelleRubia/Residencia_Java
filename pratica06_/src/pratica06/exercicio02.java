@@ -35,14 +35,18 @@ public class exercicio02 {
 				resposta = Character.toUpperCase(sc.next().charAt(0));
 			 
 			 }while(resposta =='S');
+			 
 			 for(String line : lines02) {
 				 br.write(line);
 				 br.newLine(); 
 			 }
+			 System.out.println("Conteúdo adicionado no arquivo com sucesso!");
 		 }
 		 catch(IOException e) {
 			 System.out.println("error: "+ e.getMessage());
 		 } 
+		 sc.close();
 	}
+	
 
 }
