@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class exercicio01 {
 	public static void main(String[] args) throws FileNotFoundException {
-		 File file = new File("/home/mikaelle/eclipse-workspace/pratica06/entrada.txt");
+		 File file_ = new File("/home/mikaelle/eclipse-workspace/pratica06/entrada.txt");
 		 
-		 try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+		 try(BufferedReader br = new BufferedReader(new FileReader(file_))) {
 			 String line = br.readLine();
 			 while(line != null) {
 				 System.out.println(line);
