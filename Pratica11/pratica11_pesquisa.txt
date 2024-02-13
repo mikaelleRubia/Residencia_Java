@@ -1,0 +1,121 @@
+Questão 01:
+O padrão de arquitetura MVC (Model-View-Controller) é uma abordagem de design de software que separa a lógica de negócios da interface do usuário.
+
+Model (Modelo):
+O Modelo representa os dados e a lógica de negócios da aplicação.
+Ele encapsula o estado e o comportamento dos dados, incluindo a manipulação, validação e persistência dos mesmos.
+O Modelo não está ciente da interface do usuário ou de como os dados são apresentados.
+
+View (Visão):
+A View é responsável por apresentar os dados ao usuário.
+Ela exibe a interface do usuário e interage com o usuário para coletar entradas.
+A View não contém lógica de negócios; apenas apresenta as informações fornecidas pelo Modelo.
+
+Controller (Controlador):
+O Controller atua como intermediário entre o Modelo e a View.
+Ele recebe entradas do usuário pela View, processa essas entradas e atualiza o Modelo de acordo.
+O Controller também pode atualizar a View com os dados mais recentes do Modelo, garantindo que a interface do usuário reflita o estado atual dos dados.
+
+
+Interação entre os componentes:
+O usuário interage inicialmente com a View, enviando solicitações e entradas.
+A View passa essas entradas para o Controller.
+O Controller processa as entradas, interage com o Modelo conforme necessário e atualiza o estado dos dados.
+O Modelo notifica o Controller sobre quaisquer mudanças relevantes nos dados.
+O Controller atualiza a View, que por sua vez reflete as mudanças aos usuários.
+
+
+Questão 02:
+O padrão MVC oferece várias vantagens em uma aplicação web devido à sua clara separação de responsabilidades. Facilidade de Manutenção, Reutilização de Código, 
+Testabilidade Aprimorada, Escalabilidade.
+
+
+Questão 03:
+Uma aplicação web simples de lista de tarefas, onde os usuários podem adicionar, remover e marcar como concluídas as tarefas que desejam realizar.
+
+O Modelo da aplicação seria responsável por lidar com os dados das tarefas.
+Ele poderia incluir funções para adicionar, remover e atualizar tarefas.
+O Modelo também poderia ter métodos para recuperar a lista de tarefas e marcar tarefas como concluídas.
+A View seria responsável por exibir as tarefas na interface do usuário.
+Ela mostraria a lista de tarefas disponíveis e permitiria aos usuários adicionar novas tarefas, marcar tarefas como concluídas ou removê-las.
+O Controller seria o intermediário entre a View e o Modelo.
+Ele responderia às ações do usuário na interface do usuário e acionaria os métodos apropriados no Modelo para manipular os dados das tarefas.
+Por exemplo, quando um usuário marca uma tarefa como concluída, o Controller recebe essa ação da View e solicita ao Modelo que atualize o estado da tarefa correspondente.
+
+Funcionamento da Aplicação:
+Um usuário acessa a aplicação web e visualiza a lista de tarefas na View.
+O usuário decide adicionar uma nova tarefa, preenchendo um formulário na View e enviando-o.
+O Controller recebe a solicitação de adicionar uma nova tarefa e passa os dados da tarefa para o Modelo.
+O Modelo adiciona a nova tarefa à lista de tarefas.
+O Modelo atualiza os dados para refletir a adição da nova tarefa.
+A View é atualizada para exibir a lista atualizada de tarefas, incluindo a nova tarefa adicionada.
+O usuário decide marcar uma tarefa como concluída, clicando em um botão na View.
+O Controller recebe a solicitação de marcar uma tarefa como concluída e informa ao Modelo qual tarefa deve ser marcada como concluída.
+O Modelo atualiza o estado da tarefa para refletir que ela foi concluída.
+A View é atualizada para refletir a mudança no estado da tarefa, marcando-a como concluída na interface do usuário.
+
+Questão 04:
+Facilidade de Manutenção:
+Com a separação clara entre Model, View e Controller, é mais fácil entender e modificar partes específicas da aplicação sem afetar outras partes.
+Por exemplo, se houver uma mudança nos requisitos de apresentação da aplicação, apenas a View precisaria ser modificada, mantendo o Modelo e o Controlador intactos.
+
+Escalabilidade:
+O padrão MVC facilita a escalabilidade da aplicação, pois permite que diferentes equipes trabalhem em diferentes partes do código de forma independente.
+Por exemplo, uma equipe pode se concentrar na lógica de negócios e na manipulação de dados (Model), enquanto outra equipe trabalha na interface do usuário (View) e outra equipe pode se concentrar no controle de fluxo e na interação com o usuário (Controller).
+
+Questão 05:
+O Spring Boot é um framework open-source para desenvolvimento de aplicativos Java, projetado para simplificar e acelerar o processo de criação de aplicativos.
+Seus principais objetivos são facilitar a configuração, simplificar a implantação e promover a produtividade dos desenvolvedores.
+Para facilitar a configuração, o Spring Boot reduz a necessidade de configuração manual, fornecendo padrões sensíveis e predefinidos para o aplicativo. 
+Isso elimina grande parte da configuração boilerplate que os desenvolvedores precisariam fazer de outra forma.
+Ao incorporar um servidor embutido, como Tomcat, Jetty ou Undertow, o Spring Boot simplifica significativamente o processo de implantação, eliminando a necessidade de configurar e implantar um servidor separado.
+Com sua configuração automática e padrões sensíveis, o Spring Boot permite que os desenvolvedores se concentrem mais na lógica de negócios de suas aplicações, em vez de se preocuparem com a configuração e a infraestrutura.
+Além disso, o Spring Boot faz parte do ecossistema Spring, o que significa que ele se integra perfeitamente com outros projetos e frameworks do Spring, como Spring Data, Spring Security e Spring MVC, facilitando a construção de aplicativos completos e robustos.
+O uso do Spring Boot incentiva a adoção de boas práticas de desenvolvimento, como injeção de dependência, configuração baseada em anotações e separação de preocupações.
+Essas práticas ajudam a manter o código limpo, organizado e mais fácil de dar manutenção.
+
+
+
+Questão 06:
+
+O ciclo de vida de uma aplicação Spring Boot compreende várias fases, desde a inicialização até a execução.
+
+Durante a inicialização, o Spring Boot configura e prepara o ambiente para a execução da aplicação.
+Nesta fase, o Spring Boot identifica as configurações necessárias, como propriedades, beans, componentes, entre outros.
+A anotação fundamental nesta fase é @SpringBootApplication, que marca a classe principal da aplicação e indica ao Spring Boot para iniciar a configuração e inicialização a partir dessa classe.
+
+Durante a fase de configuração, o Spring Boot configura e monta o contexto de aplicação.
+Isso inclui a configuração de beans, componentes, serviços, e a resolução de dependências.
+As anotações desempenham um papel crucial nesta fase. Por exemplo:
+@Component, @Service, @Repository: São usadas para marcar classes como componentes gerenciados pelo Spring.
+@Autowired: Usada para injetar dependências automaticamente em beans gerenciados pelo Spring.
+@Configuration: Usada para indicar que uma classe contém métodos de configuração de beans.
+
+Após a fase de configuração, a aplicação está pronta para ser executada.
+O Spring Boot inicia o servidor embutido e expõe os endpoints e serviços conforme configurado.
+Durante a execução, o Spring Boot gerencia o ciclo de vida dos beans, controlando sua criação, injeção de dependências, destruição, entre outros processos.
+
+
+
+Questão 07:
+Existem vários outros frameworks para desenvolvimento de APIs REST, além do Spring Boot. 
+Django REST Framework(Python) é uma poderosa ferramenta para construir APIs web em Python usando o framework Django.
+Ele oferece suporte para serialização de dados, autenticação, autorização, navegação na API, e muitos outros recursos que facilitam o desenvolvimento de APIs RESTful em Python.
+
+Laravel é um framework PHP moderno e popular que possui um componente chamado Laravel Lumen, que é frequentemente usado para construir APIs RESTful.
+Lumen é uma versão mais leve e rápida do Laravel, otimizada para a construção de APIs e microservices.
+
+ASP.NET Core é um framework web da Microsoft para construir aplicativos web e APIs em C#.
+Ele oferece suporte para a construção de APIs RESTful usando padrões de roteamento, controle de ação, serialização de dados, e outros recursos que simplificam o processo de desenvolvimento.
+
+Ruby on Rails é um framework web popular para Ruby, e é capaz de construir APIs RESTful de forma eficiente.
+Ele segue convenções sobre configuração, o que significa que é possível desenvolver rapidamente uma API com pouca configuração manual.
+
+Express.js é um framework web para Node.js, que é amplamente utilizado para construir APIs RESTful.
+Ele fornece uma maneira simples e flexível de criar aplicativos web e APIs, com um sistema robusto de middleware que permite o processamento de requisições HTTP de forma eficiente.
+
+Questão 08:
+Uma aplicação desenvolvida com Spring Boot pode servir como o backend (ou parte do backend) para aplicações front-end desenvolvidas com outras plataformas que não sejam Java. 
+O Spring Boot expõe APIs RESTful que podem ser consumidas por qualquer cliente que seja capaz de fazer requisições HTTP, independentemente da linguagem ou tecnologia usada no front-end.
+
+
