@@ -80,16 +80,8 @@ public class Pratica12Controller {
 	            for (String field : fields) {
 	                csvContent.append(field).append(", ");
 	            }
-	            lista.add(csvContent.toString());
-	                
+	            lista.add(csvContent.toString());   
 	            }
-	            
-	            Collections.sort(lista, (String s1, String s2) -> {
-	                int vitorias1 = Integer.parseInt(s1.split(",")[1].trim());
-	                int vitorias2 = Integer.parseInt(s2.split(",")[1].trim());
-	                return Integer.compare(vitorias2, vitorias1);
-	            });
-	            
 	            for(String vencedor: lista) {
 	            	if(cont < 5) {
 	            		listaTop5.add(vencedor);
@@ -115,16 +107,8 @@ public class Pratica12Controller {
 	            for (String field : fields) {
 	                csvContent.append(field).append(", ");
 	            }
-	            lista.add(csvContent.toString());
-	                
-	            }
-	            
-	            Collections.sort(lista, (String s1, String s2) -> {
-	                int vitorias1 = Integer.parseInt(s1.split(",")[1].trim());
-	                int vitorias2 = Integer.parseInt(s2.split(",")[1].trim());
-	                return Integer.compare(vitorias2, vitorias1);
-	            });
-	            
+	            lista.add(csvContent.toString());   
+	            }	            
 	            for(String vencedor: lista) {
 	            	if(cont < 10) {
 	            		listaTop5.add(vencedor);
@@ -136,31 +120,34 @@ public class Pratica12Controller {
 	    }
 	    return listaTop5;
 	}
-	
-    @RequestMapping("/porpais")
+
+	@RequestMapping("/porpais")
     public Map<String, Integer> vitoriasPorPais() throws IOException {
         Map<String, Integer> vitoriasPorPais = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader("/home/mikaelle/eclipse-workspace/pratica12/vencedores.csv"))) {
             String line;
-           
             br.readLine(); 
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(","); 
-                String pais = fields[2].trim();
-                int vitorias = Integer.parseInt(fields[1].trim());
-                vitoriasPorPais.put(pais, vitoriasPorPais.getOrDefault(pais, 0) + vitorias);
+                if (fields.length >= 3) {
+                    String pais = fields[2].trim();
+                    if (!fields[1].trim().isEmpty()) {
+                        int vitorias = Integer.parseInt(fields[1].trim());
+                        vitoriasPorPais.put(pais, vitoriasPorPais.getOrDefault(pais, 0) + vitorias);
+                    }
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(vitoriasPorPais.entrySet());
         sortedList.sort((a, b) -> b.getValue().compareTo(a.getValue()));
-
         Map<String, Integer> resultadoOrdenado = new HashMap<>();
         for (Map.Entry<String, Integer> entry : sortedList) {
             resultadoOrdenado.put(entry.getKey(), entry.getValue());
         }
+
         return resultadoOrdenado;
     }
 
@@ -171,32 +158,40 @@ public class Pratica12Controller {
 
         try (BufferedReader br = new BufferedReader(new FileReader("/home/mikaelle/eclipse-workspace/pratica12/vencedores.csv"))) {
             String line;
-            br.readLine();
+            br.readLine(); 
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(","); 
-                String pais = fields[2].trim();
-                int vitorias = Integer.parseInt(fields[1].trim());
-                totalVitoriasPorPais.put(pais, totalVitoriasPorPais.getOrDefault(pais, 0) + vitorias);
-                totalVencedoresPorPais.put(pais, totalVencedoresPorPais.getOrDefault(pais, 0) + 1);
+                if (fields.length >= 3) {
+                    String pais = fields[2].trim();
+                    if (!fields[1].trim().isEmpty()) {
+                        int vitorias = Integer.parseInt(fields[1].trim());
+                        totalVitoriasPorPais.put(pais, totalVitoriasPorPais.getOrDefault(pais, 0) + vitorias);
+                    }
+                    totalVencedoresPorPais.put(pais, totalVencedoresPorPais.getOrDefault(pais, 0) + 1);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Map<String, Double> mediaPorPais = new HashMap<>();
         for (String pais : totalVitoriasPorPais.keySet()) {
             int totalVitorias = totalVitoriasPorPais.get(pais);
-            int totalVencedores = totalVencedoresPorPais.get(pais);
-            double media = (double) totalVitorias / totalVencedores;
+            int totalVencedores = totalVencedoresPorPais.getOrDefault(pais, 0);
+            double media = totalVencedores > 0 ? (double) totalVitorias / totalVencedores : 0.0;
             mediaPorPais.put(pais, media);
         }
         List<Map.Entry<String, Double>> sortedList = mediaPorPais.entrySet().stream()
                 .sorted((a, b) -> Double.compare(b.getValue(), a.getValue()))
                 .collect(Collectors.toList());
+
         Map<String, Double> resultadoOrdenado = new HashMap<>();
         for (Map.Entry<String, Double> entry : sortedList) {
             resultadoOrdenado.put(entry.getKey(), entry.getValue());
         }
+
         return resultadoOrdenado;
     }
+
 
 }
