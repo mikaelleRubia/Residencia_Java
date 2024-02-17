@@ -67,9 +67,6 @@ public class Pedido {
 	
 	
 	
-	
-	
-
 
 	public static void main(String[] args) {
 		 Pedido pedidoComDesconto = new Pedido(1, "123.456.789-00");
