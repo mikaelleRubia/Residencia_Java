@@ -6,19 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ModeloAeronave {
+public class Modeloaeronave {
 	@Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String fabricante;
 	private String nome;
 	
 	
-	public ModeloAeronave() {
+	public Modeloaeronave() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ModeloAeronave(String fabricante, String nome) {
+	public Modeloaeronave(Long id, String fabricante, String nome) {
 		super();
+		this.id = id;
 		this.fabricante = fabricante;
 		this.nome = nome;
 	}
@@ -33,6 +34,12 @@ public class ModeloAeronave {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

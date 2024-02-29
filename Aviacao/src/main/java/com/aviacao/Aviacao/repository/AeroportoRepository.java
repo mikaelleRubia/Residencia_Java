@@ -6,5 +6,5 @@ import com.aviacao.Aviacao.model.Aeroporto;
 
 
 public interface AeroportoRepository extends JpaRepository<Aeroporto, Long > {
-
+	
 }

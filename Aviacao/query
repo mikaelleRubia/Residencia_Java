@@ -1,0 +1,10 @@
+INSERT INTO Aeroporto (ICAO, nome) VALUES ('SBIL', 'Aeroporto de Ilheus');
+INSERT INTO Aeroporto (ICAO, nome) VALUES ('SBIL', 'Aeroporto de Salvador');
+
+INSERT INTO Piloto (nome, numbreve) VALUES ('Carlos antonio', '123456');
+INSERT INTO Piloto (nome, numbreve) VALUES ('Vinicius Andrade', '9874');
+
+
+
+INSERT INTO MODELO_AERONAVE (fabricante, nome) VALUES ('fabricante01', 'modelo01')
+INSERT INTO MODELO_AERONAVE (fabricante, nome) VALUES ('fabricante02', 'modelo02')

@@ -17,9 +17,9 @@ public class Piloto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Piloto(String nome, String numbreve) {
+	public Piloto(Long id, String nome, String numbreve) {
 		super();
-
+		this.id = id;
 		this.nome = nome;
 		this.numbreve = numbreve;
 	}
